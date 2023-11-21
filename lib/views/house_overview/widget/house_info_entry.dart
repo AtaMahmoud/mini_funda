@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../models/house.dart';
 import '../../common_ui/text_style.dart';
+import '../../house_details.dart/house_details.dart';
 
 class HouseInfo extends StatelessWidget {
   final House house;
@@ -13,7 +14,9 @@ class HouseInfo extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () => Navigator.of(context).push(
+          HouseDetailsPage.route(id: house.id),
+        ),
         child: Card(
           clipBehavior: Clip.hardEdge,
           child: Column(
