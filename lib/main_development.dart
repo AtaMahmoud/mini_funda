@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mini_funda/views/app.dart';
 
 import 'app_init/app_init.dart';
