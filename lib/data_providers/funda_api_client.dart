@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart';
 
+import '../models/city.dart';
 import '../models/house.dart';
 import '../models/house_details.dart';
 
@@ -92,6 +94,13 @@ class FundaApiClient {
     }
 
     return HouseDetails.fromJson(body);
+  }
+
+  Future<List<City>> getDutchCities() async {
+    String cities = await rootBundle.loadString('assets/nl_cities.json');
+
+    List<dynamic> citiesJson = json.decode(cities);
+    return citiesJson.map((json) => City.fromJson(json)).toList();
   }
 }
 
