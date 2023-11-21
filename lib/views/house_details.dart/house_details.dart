@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:mini_funda/views/common_ui/error_screen.dart';
 
 import '../../data_providers/funda_homes_repository.dart';
 import '../../models/house_details.dart';
@@ -50,7 +50,11 @@ class HouseDetailsScreen extends StatelessWidget {
           HouseDetailsStatus.loading => const LoadingIndicator(),
           HouseDetailsStatus.loaded =>
             FetchedHouseDetails(houseDetails: state.houseDetails!),
-          HouseDetailsStatus.failure => const Text("Error"),
+          HouseDetailsStatus.failure => ErrorScreen.houseCouldBeSold(
+              () => context
+                  .read<HouseDetailsBloc>()
+                  .add(const HouseDetailsRequested()),
+            ),
         };
       }),
     );

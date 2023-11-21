@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mini_funda/views/common_ui/error_screen.dart';
 import 'package:mini_funda/views/common_ui/spacer.dart';
 import 'package:mini_funda/views/house_overview/bloc/house_overview_bloc.dart';
 import 'package:mini_funda/views/house_overview/bloc/house_overview_event.dart';
@@ -72,8 +73,10 @@ class _HouseOverviewScreenState extends State<HouseOverviewScreen> {
                           subtitle: Text(city.adminName),
                           onTap: () {
                             controller.closeView(city.name);
-                            _selectedCity = city.name;
-                            _requestSelectedCityHomes();
+                            if (city.name != _selectedCity) {
+                              _selectedCity = city.name;
+                              _requestSelectedCityHomes();
+                            }
                           },
                         ),
                       )
@@ -82,12 +85,12 @@ class _HouseOverviewScreenState extends State<HouseOverviewScreen> {
               ),
               HorizontalSpacer.l(),
               switch (state.status) {
-                //TODO: add error screen with the init state screen
-                HouseOverviewStatus.failure => const Text("Error"),
-                HouseOverviewStatus.initial => const Text("Init state"),
+                HouseOverviewStatus.initial => const SizedBox.shrink(),
                 HouseOverviewStatus.loading => const LoadingIndicator(),
                 HouseOverviewStatus.loaded =>
                   Expanded(child: HousesList(houses: state.houses)),
+                HouseOverviewStatus.failure =>
+                  ErrorScreen(onTryAgain: _requestSelectedCityHomes),
               }
             ],
           );
