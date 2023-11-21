@@ -36,4 +36,17 @@ class House extends Equatable {
   factory House.fromJson(Map<String, dynamic> json) => _$HouseFromJson(json);
 
   String get formattedPrice => priceFormatter(price);
+
+  factory House.testInstance({
+    String? testId,
+    String? testAddress,
+  }) =>
+      House(
+        id: testId ?? "id",
+        address: testAddress ?? "address",
+        postCode: "postCode",
+        price: 350000,
+        bedrooms: "2",
+        coverImageUrl: "coverImageUrl",
+      );
 }

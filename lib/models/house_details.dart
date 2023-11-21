@@ -89,6 +89,27 @@ class HouseDetails extends Equatable {
     return DateFormat("MMMM d, y").format(date);
   }
 
+  factory HouseDetails.testInstance() => const HouseDetails(
+        offeredSince: "offeredSince",
+        bathrooms: 1,
+        bedrooms: 1,
+        floors: "floors",
+        acceptance: "acceptance",
+        address: "address",
+        constructionYear: "1997",
+        constructionType: "constructionType",
+        energyLabel: "A",
+        mainImageUrl: "mainImageUrl",
+        insulation: "insulation",
+        postalCode: "postalCode",
+        city: "city",
+        space: 100,
+        fullDescription: "fullDescription",
+        houseType: "houseType",
+        price: Price(price: 350000, priceAbbreviation: "K.K"),
+        cv: "cv",
+      );
+
   @override
   List<Object?> get props => [
         address,
