@@ -15,7 +15,10 @@ class HouseInfo extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
         onTap: () => Navigator.of(context).push(
-          HouseDetailsPage.route(id: house.id),
+          HouseDetailsPage.route(
+            id: house.id,
+            address: house.address,
+          ),
         ),
         child: Card(
           clipBehavior: Clip.hardEdge,

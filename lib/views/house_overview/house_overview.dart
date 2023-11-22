@@ -53,7 +53,6 @@ class _HouseOverviewScreenState extends State<HouseOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Mini Funda"),
       ),
@@ -61,27 +60,31 @@ class _HouseOverviewScreenState extends State<HouseOverviewScreen> {
         builder: (BuildContext context, HouseOverviewState state) {
           return Column(
             children: [
-              SearchAnchor.bar(
-                suggestionsBuilder: (context, controller) {
-                  return state.cities
-                      .where((city) => city.name
-                          .toLowerCase()
-                          .contains(controller.text.toLowerCase()))
-                      .map(
-                        (city) => ListTile(
-                          title: Text(city.name),
-                          subtitle: Text(city.adminName),
-                          onTap: () {
-                            controller.closeView(city.name);
-                            if (city.name != _selectedCity) {
-                              _selectedCity = city.name;
-                              _requestSelectedCityHomes();
-                            }
-                          },
-                        ),
-                      )
-                      .toList();
-                },
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SearchAnchor.bar(
+                  barHintText: "City name",
+                  suggestionsBuilder: (context, controller) {
+                    return state.cities
+                        .where((city) => city.name
+                            .toLowerCase()
+                            .contains(controller.text.toLowerCase()))
+                        .map(
+                          (city) => ListTile(
+                            title: Text(city.name),
+                            subtitle: Text(city.adminName),
+                            onTap: () {
+                              controller.closeView(city.name);
+                              if (city.name != _selectedCity) {
+                                _selectedCity = city.name;
+                                _requestSelectedCityHomes();
+                              }
+                            },
+                          ),
+                        )
+                        .toList();
+                  },
+                ),
               ),
               HorizontalSpacer.l(),
               switch (state.status) {

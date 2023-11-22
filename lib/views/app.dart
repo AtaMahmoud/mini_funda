@@ -19,8 +19,19 @@ class App extends StatelessWidget {
       child: MaterialApp(
         color: Colors.orange,
         home: const HouseOverview(),
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
+        theme: Theme.of(context).copyWith(
+          primaryColor: Colors.orange,
+          appBarTheme: AppBarTheme.of(context).copyWith(
+            color: Colors.orange,
+            titleTextStyle: AppBarTheme.of(context).titleTextStyle?.copyWith(
+                      color: Colors.white,
+                    ) ??
+                const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  overflow: TextOverflow.fade,
+                ),
+          ),
         ),
       ),
     );

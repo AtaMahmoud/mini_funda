@@ -14,13 +14,23 @@ import 'widgets/description_section.dart';
 import 'widgets/feature_entry.dart';
 
 class HouseDetailsPage extends StatelessWidget {
-  const HouseDetailsPage({required this.houseId, super.key});
+  const HouseDetailsPage({
+    required this.houseId,
+    required this.houseAddress,
+    super.key,
+  });
 
   final String houseId;
+  final String houseAddress;
 
-  static Route<void> route({required String id}) => MaterialPageRoute<void>(
+  static Route<void> route({
+    required String id,
+    required String address,
+  }) =>
+      MaterialPageRoute<void>(
         builder: (context) => HouseDetailsPage(
           houseId: id,
+          houseAddress: address,
         ),
       );
 
@@ -31,18 +41,27 @@ class HouseDetailsPage extends StatelessWidget {
         houseId: houseId,
         fundaHomesRepository: context.read<FundaHomesRepository>(),
       )..add(const HouseDetailsRequested()),
-      child: const HouseDetailsScreen(),
+      child: HouseDetailsScreen(
+        address: houseAddress,
+      ),
     );
   }
 }
 
 class HouseDetailsScreen extends StatelessWidget {
-  const HouseDetailsScreen({super.key});
+  const HouseDetailsScreen({required this.address, super.key});
+
+  final String address;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          address,
+          softWrap: true,
+        ),
+      ),
       body: BlocBuilder<HouseDetailsBloc, HouseDetailsState>(
           builder: (BuildContext context, HouseDetailsState state) {
         return switch (state.status) {
