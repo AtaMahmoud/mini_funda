@@ -28,6 +28,11 @@ Get third-party packages:
 flutter pub get
 ```
 
+to run the code generation if needed
+```sh
+ dart run build_runner build
+```
+
 to run all test files
 ```sh
 flutter test
