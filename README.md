@@ -1,16 +1,32 @@
 # mini_funda
 
-A new Flutter project.
+Just a mini version of funda overview screen using Funda API
+
+## Development
+Mini Funda is built with `VS Code` , `Flutter 3.16.0` and `Dart 3.2.0`
+
+The app is following `bloc` state management library which allows us to separate our application into three layers:
+
+* Presentation which is the app UI.
+* Business Logic where all `Blocs` orchestrate the flow of data and UI interactions.
+* Data layer which include the API client and repository.
+
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+After cloning this repository, perform the following steps before building your project.
 
-A few resources to get you started if this is your first Flutter project:
+Get third party packages:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```sh
+flutter pub get
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+to run all test files
+```sh
+flutter test
+```
+the app includes a mix of normal tests and widget test.
+
+## Demo
