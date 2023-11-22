@@ -7,15 +7,20 @@ Mini Funda is built with `VS Code`, `Flutter 3.16.0` and `Dart 3.2.0`
 
 The app follows `bloc` state management library which allows us to separate our application into three layers:
 
-* Presentation which is the app UI.
-* Business Logic where all `Blocs` orchestrate the flow of data and UI interactions.
-* Data layer which includes the API client and repository.
+* Presentation which is the app UI [`house_overview.dart` & `house_details.dart`].
+* Business Logic where all `Blocs` orchestrate the flow of data and UI interactions [`house_overview_bloc.dart` & `house_details_bloc.dart`].
+* Data layer which includes the API client and repository [`funda_api_client.dart` & `funda_homes_repository.dart`].
 
 
 
 ## Getting Started
 
 After cloning this repository, perform the following steps before building your project.
+
+Add your API key to `launch.json`
+```sh
+ FUNDA_API_KEY=YOUR_API_KEY
+```
 
 Get third-party packages:
 
