@@ -28,7 +28,7 @@ class ErrorScreen extends StatelessWidget {
         children: [
           const Icon(Icons.error),
           HorizontalSpacer.xs(),
-           Text(
+          Text(
             errorMessage,
             textAlign: TextAlign.center,
             style: MiniFundaTextTheme.h1,
